@@ -1,0 +1,9 @@
+==================================================
+Results for run: SimpleMLP_baseline_20251020_194736
+Model Path: runs\SimpleMLP_baseline_20251020_194736\best_model.pth
+Precision   : 0.0743
+Recall      : 0.0243
+F1 score    : 0.0302
+Iou         : 0.0160
+==================================================
+
