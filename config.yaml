@@ -1,7 +1,7 @@
 # config.yaml
 
 # --- Project Settings ---
-base_run_name: "SimpleMLP_baseline" # CHANGE THIS EVERY TIME => is the base name for generating unique training runs
+base_run_name: "SimpleMLP_baseline_1" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
 output_dir: "runs"                  # Main directory to save all outputs
 
 # --- Dataset Settings ---
@@ -9,6 +9,7 @@ data_path: "../dataset"
 train_scenes: ["scene1", "scene2"]
 val_scenes: ["scene3"]
 test_scenes: ["scene4"]
+stats_file: "runs/dataset_stats.pt"
 
 # --- Model Settings ---
 input_channels: 13              # 12 Sentinel-2 bands + 1 Aerosol band
@@ -24,6 +25,8 @@ num_workers: 4                  # Adjust based on your CPU cores
 results_file: "runs/test_results.txt"
 
 
+# CONDA
+# ata_analytics_ass1_gpu <= environment
 
 # TO TRAIN
 # python train.py

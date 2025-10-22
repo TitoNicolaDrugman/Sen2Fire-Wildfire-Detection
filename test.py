@@ -71,7 +71,8 @@ def test_model(config, test_run_name): # <-- Accept the run name as an argument
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Test a trained Sen2Fire model.")
     parser.add_argument('run_name', type=str, 
-                        help="The unique name of the run folder to test (e.g., 'SimpleMLP_baseline_20251020_194736')")
+                        help="The unique name of the run folder to test (e.g., 'SimpleMLP_baseline'), "
+                             "which corresponds to 'base_run_name' in the config file used for training.")
     args = parser.parse_args()
 
     with open('config.yaml', 'r') as f:

@@ -43,10 +43,17 @@ def validate_one_epoch(model, dataloader, criterion, device):
 
 def main(config):
     # --- Setup Unique Run Directory ---
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    run_name = f"{config['base_run_name']}_{timestamp}"
+    run_name = config['base_run_name']
     run_path = os.path.join(config['output_dir'], run_name)
-    os.makedirs(run_path, exist_ok=True)
+
+    # --- Prevent Overwriting ---
+    if os.path.exists(run_path):
+        raise FileExistsError(
+            f"Run directory '{run_path}' already exists.\n"
+            f"Please change the 'base_run_name' in 'config.yaml' to a unique name to avoid overwriting results."
+        )
+    
+    os.makedirs(run_path)
     print(f"Starting run: {run_name}")
     print(f"Output will be saved to: {run_path}")
 
