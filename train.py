@@ -6,10 +6,10 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from datetime import datetime
+from torch.optim.lr_scheduler import CosineAnnealingLR
 
 from dataset import Sen2FireDataset
-from augmentations import NoAugmentation
+from augmentations import Compose, Standardize, RandomHorizontalFlip, RandomVerticalFlip
 from model import SimpleMLP
 from loss import get_loss_function
 
@@ -46,13 +46,11 @@ def main(config):
     run_name = config['base_run_name']
     run_path = os.path.join(config['output_dir'], run_name)
 
-    # --- Prevent Overwriting ---
     if os.path.exists(run_path):
         raise FileExistsError(
             f"Run directory '{run_path}' already exists.\n"
             f"Please change the 'base_run_name' in 'config.yaml' to a unique name to avoid overwriting results."
-        )
-    
+)
     os.makedirs(run_path)
     print(f"Starting run: {run_name}")
     print(f"Output will be saved to: {run_path}")
@@ -65,23 +63,49 @@ def main(config):
         for i in range(torch.cuda.device_count()):
             print(f"  - GPU {i}: {torch.cuda.get_device_name(i)}")
 
+    # --- Load Pre-computed Normalization Statistics ---
+    stats_path = config['stats_file']
+    if not os.path.exists(stats_path):
+        raise FileNotFoundError(
+            f"Statistics file not found at '{stats_path}'.\n"
+            f"Please run `preprocessing.py` first to generate it."
+        )
+    stats = torch.load(stats_path)
+    mean, std = stats['mean'], stats['std']
+    print(f"Successfully loaded normalization statistics from {stats_path}")
+
+    # --- Define Augmentation and Preprocessing Pipelines ---
+    # The training set gets normalization and random augmentations
+    train_transform = Compose([
+        Standardize(mean, std),
+        RandomHorizontalFlip(p=0.5),
+        RandomVerticalFlip(p=0.5)
+    ])
+    # The validation set ONLY gets normalization. No random augmentations.
+    val_transform = Compose([
+        Standardize(mean, std)
+    ])
+
     # --- Data Loading ---
-    transform = NoAugmentation()
-    train_dataset = Sen2FireDataset(config['data_path'], config['train_scenes'], transform)
-    val_dataset = Sen2FireDataset(config['data_path'], config['val_scenes'], transform)
+    train_dataset = Sen2FireDataset(config['data_path'], config['train_scenes'], train_transform)
+    val_dataset = Sen2FireDataset(config['data_path'], config['val_scenes'], val_transform)
     train_loader = DataLoader(train_dataset, batch_size=config['batch_size'], shuffle=True, num_workers=config['num_workers'])
     val_loader = DataLoader(val_dataset, batch_size=config['batch_size'], shuffle=False, num_workers=config['num_workers'])
+    print(f"Training data: {len(train_dataset)} samples. Validation data: {len(val_dataset)} samples.")
 
     # --- Model, Loss, and Optimizer ---
     model = SimpleMLP(input_channels=config['input_channels'])
     model.to(device)
+    
+    # Use DataParallel for multi-GPU training if available
     if torch.cuda.device_count() > 1:
-        print("Using DataParallel for multi-GPU training.")
+        print(f"Using nn.DataParallel for {torch.cuda.device_count()} GPUs.")
         model = nn.DataParallel(model)
 
     criterion = get_loss_function()
     optimizer = torch.optim.Adam(model.parameters(), lr=config['learning_rate'])
-    
+    scheduler = CosineAnnealingLR(optimizer, T_max=config['epochs'], eta_min=1e-6)
+
     # --- Training Loop ---
     best_val_loss = float('inf')
     train_losses, val_losses = [], []
@@ -91,13 +115,15 @@ def main(config):
         val_loss = validate_one_epoch(model, val_loader, criterion, device)
         train_losses.append(train_loss)
         val_losses.append(val_loss)
+        scheduler.step()
         print(f"Epoch {epoch+1}: Train Loss = {train_loss:.4f}, Val Loss = {val_loss:.4f}")
         
         if val_loss < best_val_loss:
             best_val_loss = val_loss
+            # Correctly save model state whether using DataParallel or not
             model_state = model.module.state_dict() if isinstance(model, nn.DataParallel) else model.state_dict()
             torch.save(model_state, os.path.join(run_path, 'best_model.pth'))
-            print("New best model saved!")
+            print(f"Validation loss improved to {best_val_loss:.4f}. New best model saved!")
 
     # --- Plotting and Saving ---
     plt.figure(figsize=(10, 5))
