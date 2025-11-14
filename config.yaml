@@ -1,36 +1,20 @@
-# config.yaml
-
-# --- Project Settings ---
-base_run_name: "SimpleMLP_20251114_001830" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
-output_dir: "runs"                  # Main directory to save all outputs
-
-# --- Dataset Settings ---
-data_path: "/root/.cache/kagglehub/datasets/shariaarfin/sen2fire/versions/1"
-train_scenes: ["scene1", "scene2"]
-val_scenes: ["scene3"]
-test_scenes: ["scene4"]
-stats_file: "runs/dataset_stats.pt"
-
-# --- Model Settings ---
-input_channels: 13              # 12 Sentinel-2 bands + 1 Aerosol band
-model_name = simple_cnn
-num_classes = 1
-
-# --- Training Settings ---
-device: "cuda"                  # "cuda" or "cpu"
-batch_size: 16                  # Adjust based on your GPU memory
-epochs: 5                       # Increased for a more meaningful training
+base_run_name: SimpleMLP_20251114_001830
+batch_size: 16
+data_path: /root/.cache/kagglehub/datasets/shariaarfin/sen2fire/versions/1
+device: cuda
+epochs: 5
+input_channels: 13
 learning_rate: 0.001
-num_workers: 4                  # Adjust based on your CPU cores
-
-# --- Output Settings ---
-results_file: "runs/test_results.txt"
-
-
-# CONDA
-# ata_analytics_ass1_gpu <= environment
-
-# TO TRAIN
-# python train.py
-
-change here only data_path to 
+model_name: simple_cnn
+num_classes: 1
+num_workers: 4
+output_dir: runs
+results_file: runs/test_results.txt
+stats_file: runs/dataset_stats.pt
+test_scenes:
+- scene4
+train_scenes:
+- scene1
+- scene2
+val_scenes:
+- scene3
