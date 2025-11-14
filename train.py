@@ -10,7 +10,7 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 
 from dataset import Sen2FireDataset
 from augmentations import Compose, Standardize, RandomHorizontalFlip, RandomVerticalFlip
-from model import SimpleMLP
+from model import build_model
 from loss import get_loss_function
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device):
@@ -94,8 +94,12 @@ def main(config):
     print(f"Training data: {len(train_dataset)} samples. Validation data: {len(val_dataset)} samples.")
 
     # --- Model, Loss, and Optimizer ---
-    model = SimpleMLP(input_channels=config['input_channels'])
-    model.to(device)
+    model = build_model(
+        model_name=config.get("model_name", "simple_mlp"),
+        in_channels=config["input_channels"],
+        num_classes=config.get("num_classes", 1),
+    )
+    model = model.to(device)
     
     # Use DataParallel for multi-GPU training if available
     if torch.cuda.device_count() > 1:
