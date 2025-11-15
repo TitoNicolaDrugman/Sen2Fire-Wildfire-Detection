@@ -1,13 +1,13 @@
-base_run_name: SimpleMLP_20251114_001830
-batch_size: 16
+base_run_name: Unet20251115_133754
+batch_size: 4
 data_path: /root/.cache/kagglehub/datasets/shariaarfin/sen2fire/versions/1
 device: cuda
 epochs: 5
 input_channels: 13
 learning_rate: 0.001
-model_name: simple_cnn
+model_name: unet
 num_classes: 1
-num_workers: 4
+num_workers: 2
 output_dir: runs
 results_file: runs/test_results.txt
 stats_file: runs/dataset_stats.pt

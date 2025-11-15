@@ -16,3 +16,14 @@ F1 score    : 0.0080
 Iou         : 0.0040
 ==================================================
 
+==================================================
+Results for run: Unet20251115_133754
+TTA Enabled: True
+Model Architecture: unet
+Model Path: runs/Unet20251115_133754/best_model.pth
+Precision   : 0.0000
+Recall      : 0.0000
+F1 score    : 0.0000
+Iou         : 0.0000
+==================================================
+
