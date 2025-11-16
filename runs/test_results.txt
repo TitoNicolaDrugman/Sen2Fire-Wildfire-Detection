@@ -16,3 +16,15 @@ F1 score    : 0.0080
 Iou         : 0.0040
 ==================================================
 
+==================================================
+Results for run: SimpleCNN
+TTA Enabled: True
+Model Architecture: simple_cnn
+Model Path: runs/SimpleCNN/best_model.pth
+Chosen threshold: 0.0100
+Precision   : 0.0751
+Recall      : 0.7127
+F1 score    : 0.1359
+Iou         : 0.0729
+==================================================
+

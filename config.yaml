@@ -1,11 +1,11 @@
 # config.yaml
 
 # --- Project Settings ---
-base_run_name: "SimpleMLP_baseline_1" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
+base_run_name: "SimpleCNN" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
 output_dir: "runs"                  # Main directory to save all outputs
 
 # --- Dataset Settings ---
-data_path: "../dataset"
+data_path: "/kaggle/input/sen2fire"
 train_scenes: ["scene1", "scene2"]
 val_scenes: ["scene3"]
 test_scenes: ["scene4"]
@@ -16,10 +16,14 @@ input_channels: 13              # 12 Sentinel-2 bands + 1 Aerosol band
 
 # --- Training Settings ---
 device: "cuda"                  # "cuda" or "cpu"
-batch_size: 16                  # Adjust based on your GPU memory
-epochs: 5                       # Increased for a more meaningful training
+batch_size: 8                  # Adjust based on your GPU memory
+epochs: 30                       # Increased for a more meaningful training
 learning_rate: 0.001
-num_workers: 4                  # Adjust based on your CPU cores
+num_workers: 2                  # Adjust based on your CPU cores
+model_name: simple_cnn
+n_classes: 1        # 1 for binary segmentation mask logits; >1 for classification
+use_tta: True
+eval_threshold: 0.5
 
 # --- Output Settings ---
 results_file: "runs/test_results.txt"
