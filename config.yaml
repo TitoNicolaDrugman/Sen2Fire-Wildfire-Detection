@@ -1,11 +1,11 @@
 # config.yaml
 
 # --- Project Settings ---
-base_run_name: "SimpleCNN" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
+base_run_name: "Unet" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
 output_dir: "runs"                  # Main directory to save all outputs
 
 # --- Dataset Settings ---
-data_path: "/kaggle/input/sen2fire"
+data_path: "/root/.cache/kagglehub/datasets/shariaarfin/sen2fire/versions/1"
 train_scenes: ["scene1", "scene2"]
 val_scenes: ["scene3"]
 test_scenes: ["scene4"]
@@ -20,7 +20,7 @@ batch_size: 8                  # Adjust based on your GPU memory
 epochs: 30                       # Increased for a more meaningful training
 learning_rate: 0.001
 num_workers: 2                  # Adjust based on your CPU cores
-model_name: simple_cnn
+model_name: unet
 n_classes: 1        # 1 for binary segmentation mask logits; >1 for classification
 use_tta: True
 eval_threshold: 0.5
