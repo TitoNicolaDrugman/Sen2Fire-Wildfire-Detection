@@ -28,3 +28,15 @@ F1 score    : 0.1359
 Iou         : 0.0729
 ==================================================
 
+==================================================
+Results for run: Unet
+TTA Enabled: True
+Model Architecture: unet
+Model Path: runs/Unet/best_model.pth
+Chosen threshold: 0.3300
+Precision   : 0.3192
+Recall      : 0.2317
+F1 score    : 0.2685
+Iou         : 0.1551
+==================================================
+
