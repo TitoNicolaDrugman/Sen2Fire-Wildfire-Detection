@@ -51,6 +51,8 @@ class Sen2FireDataset(Dataset):
         # Concatenate sensor bands and aerosol to form the input
         input_data = np.concatenate((image, aerosol), axis=0) # -> (13, 512, 512)
 
+        input_data = input_data[[1,2,3,12], :, :]
+
         # Convert to PyTorch tensors
         input_tensor = torch.from_numpy(input_data)
         label_tensor = torch.from_numpy(label)

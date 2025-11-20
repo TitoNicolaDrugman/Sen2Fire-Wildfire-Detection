@@ -40,3 +40,15 @@ F1 score    : 0.2685
 Iou         : 0.1551
 ==================================================
 
+==================================================
+Results for run: Unet_RGB_aerosol
+TTA Enabled: True
+Model Architecture: unet
+Model Path: runs/Unet_RGB_aerosol/best_model.pth
+Chosen threshold: 0.0100
+Precision   : 0.0762
+Recall      : 0.8213
+F1 score    : 0.1395
+Iou         : 0.0750
+==================================================
+

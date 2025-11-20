@@ -1,7 +1,7 @@
 # config.yaml
 
 # --- Project Settings ---
-base_run_name: "Unet" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
+base_run_name: "Unet_RGB_aerosol" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
 output_dir: "runs"                  # Main directory to save all outputs
 
 # --- Dataset Settings ---
@@ -12,7 +12,7 @@ test_scenes: ["scene4"]
 stats_file: "runs/dataset_stats.pt"
 
 # --- Model Settings ---
-input_channels: 13              # 12 Sentinel-2 bands + 1 Aerosol band
+input_channels: 4              # 12 Sentinel-2 bands + 1 Aerosol band
 
 # --- Training Settings ---
 device: "cuda"                  # "cuda" or "cpu"
