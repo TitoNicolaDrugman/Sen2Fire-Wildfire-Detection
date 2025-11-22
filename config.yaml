@@ -1,18 +1,20 @@
+
 # config.yaml
 
 # --- Project Settings ---
-base_run_name: "Unet_RGB_aerosol" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
+base_run_name: "Unet_swir_aerosol_v3" # CHANGE THIS EVERY TIME MUST BE UNIQUE => is the base name for generating unique training runs
 output_dir: "runs"                  # Main directory to save all outputs
 
 # --- Dataset Settings ---
-data_path: "/root/.cache/kagglehub/datasets/shariaarfin/sen2fire/versions/1"
+data_path: "/kaggle/input/sen2fire"
 train_scenes: ["scene1", "scene2"]
 val_scenes: ["scene3"]
 test_scenes: ["scene4"]
-stats_file: "runs/dataset_stats.pt"
+stats_file: "runs/dataset_stats_swir_aerosol.pt"
 
 # --- Model Settings ---
-input_channels: 4              # 12 Sentinel-2 bands + 1 Aerosol band
+input_strategy: swir_aerosol    # rgb_aerosol | swir_aerosol | nbr_aerosol | ndvi_aerosol | rgb_swir_nbr_ndvi_aerosol | vanilla
+input_channels: 3              # 12 Sentinel-2 bands + 1 Aerosol band
 
 # --- Training Settings ---
 device: "cuda"                  # "cuda" or "cpu"
@@ -22,7 +24,7 @@ learning_rate: 0.001
 num_workers: 2                  # Adjust based on your CPU cores
 model_name: unet
 n_classes: 1        # 1 for binary segmentation mask logits; >1 for classification
-use_tta: True
+use_tta: False
 eval_threshold: 0.5
 
 # --- Output Settings ---

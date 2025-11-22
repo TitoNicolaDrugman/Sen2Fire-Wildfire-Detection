@@ -52,3 +52,29 @@ F1 score    : 0.1395
 Iou         : 0.0750
 ==================================================
 
+==================================================
+Results for run: Unet_swir_aerosol_v3
+Strategy: swir_aerosol
+TTA Enabled: True
+Model: unet
+Model Path: runs/Unet_swir_aerosol_v3/best_model.pth
+Chosen threshold: 0.1600
+Precision   : 0.4059
+Recall      : 0.2643
+F1 score    : 0.3201
+Iou         : 0.1906
+==================================================
+
+==================================================
+Results for run: Unet_swir_aerosol_v3
+Strategy: swir_aerosol
+TTA Enabled: False
+Model: unet
+Model Path: runs/Unet_swir_aerosol_v3/best_model.pth
+Chosen threshold: 0.1600
+Precision   : 0.4136
+Recall      : 0.2564
+F1 score    : 0.3166
+Iou         : 0.1880
+==================================================
+
