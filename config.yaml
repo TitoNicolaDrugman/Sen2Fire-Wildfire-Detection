@@ -1,0 +1,39 @@
+# config.yaml
+
+# --- Project Settings ---
+base_run_name: "SegFormer_run_8_LowerLR_and_LowerMaxWeight_2"
+output_dir: "runs"
+
+# --- Dataset Settings ---
+data_path: "C:/Users/drugm/Documents/DATA_ANALYTICS/HK_1/dataset"
+train_scenes: ["scene1", "scene2"]
+val_scenes: ["scene3"]
+test_scenes: ["scene4"]
+stats_file: "runs/dataset_stats.pt"
+
+# --- Model Settings ---
+model_name: "SegFormer"
+input_channels: 13
+
+# --- Loss/Imbalance Settings ---
+loss_name: "BCE_DICE"
+use_pos_weight_from_stats: true    # IMPORTANT: Set to true to use the pixel weight map
+focal_alpha: 0.25
+focal_gamma: 2.0
+dice_smooth: 1.0
+
+# --- Training Settings ---
+device: "cuda"
+batch_size: 64
+epochs: 200
+learning_rate: 0.00001
+num_workers: 8
+patience: 30
+amp: true
+
+# --- Eval Settings ---
+eval_threshold: 0.5
+use_tta: false
+
+# --- Output Settings ---
+results_file: "runs/test_results.txt"

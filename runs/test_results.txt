@@ -1,0 +1,55 @@
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2\best_model.pth
+Precision   : 0.2397
+Recall      : 0.3697
+F1 score    : 0.2613
+Iou         : 0.1619
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight
+TTA Enabled: False
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight\best_model.pth
+Precision   : 0.0411
+Recall      : 0.1353
+F1 score    : 0.0589
+Iou         : 0.0314
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight\best_model.pth
+Precision   : 0.0378
+Recall      : 0.1320
+F1 score    : 0.0549
+Iou         : 0.0292
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2\best_model.pth
+Precision   : 0.2397
+Recall      : 0.3697
+F1 score    : 0.2613
+Iou         : 0.1619
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2
+TTA Enabled: False
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2\best_model.pth
+Precision   : 0.2261
+Recall      : 0.3583
+F1 score    : 0.2540
+Iou         : 0.1563
+==================================================
+
