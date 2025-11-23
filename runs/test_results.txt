@@ -1,0 +1,44 @@
+==================================================
+Results for run: SegFormer_run_6
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_6\best_model.pth
+Precision   : 0.1747
+Recall      : 0.2223
+F1 score    : 0.1915
+Iou         : 0.1141
+==================================================
+
+==================================================
+Results for run: SegFormer_run_7_BCE_DICE
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_7_BCE_DICE\best_model.pth
+Precision   : 0.2828
+Recall      : 0.2580
+F1 score    : 0.2440
+Iou         : 0.1493
+==================================================
+
+==================================================
+Results for run: SegFormer_run_7_BCE_DICE
+TTA Enabled: False
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_7_BCE_DICE\best_model.pth
+Precision   : 0.2615
+Recall      : 0.2685
+F1 score    : 0.2442
+Iou         : 0.1486
+==================================================
+
+==================================================
+Results for run: SegFormer_run_7_BCE_DICE
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_7_BCE_DICE\best_model.pth
+Precision   : 0.2828
+Recall      : 0.2580
+F1 score    : 0.2440
+Iou         : 0.1493
+==================================================
+

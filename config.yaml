@@ -1,0 +1,45 @@
+# config.yaml
+
+# --- Project Settings ---
+base_run_name: "SegFormer_run_7_BCE_DICE"
+output_dir: "runs"
+
+# --- Dataset Settings ---
+data_path: "C:/Users/drugm/Documents/DATA_ANALYTICS/HK_1/dataset"
+train_scenes: ["scene1", "scene2"]
+val_scenes: ["scene3"]
+test_scenes: ["scene4"]
+stats_file: "runs/dataset_stats.pt"
+
+# --- Model Settings ---
+model_name: "SegFormer"             # USE THE SEGFORMER MODEL
+input_channels: 13                 # 12 S2 + 1 aerosol
+
+# --- Loss/Imbalance Settings ---
+loss_name: "BCE_DICE"      # USE CROSS ENTROPY FOR 2-CHANNEL OUTPUT
+use_pos_weight_from_stats: false   # Not applicable for CrossEntropyLoss in this setup
+focal_alpha: 0.25
+focal_gamma: 2.0
+dice_smooth: 1.0
+
+# --- Training Settings ---
+device: "cuda"
+batch_size: 64
+epochs: 200
+learning_rate: 0.0001
+num_workers: 8
+patience: 30
+amp: true
+
+# 32 - 8 => 1.54 min for 46/46 
+# 16 - 8 => 2.41 min for 92/92
+# 32 - 16 => 2.46 min for 46/46
+# 64 - 8 => 1.31min for 23/23
+# 128 - 8 => OUT OF MEMORY for 12/12
+
+# --- Eval Settings ---
+eval_threshold: 0.5
+use_tta: true
+
+# --- Output Settings ---
+results_file: "runs/test_results.txt"
