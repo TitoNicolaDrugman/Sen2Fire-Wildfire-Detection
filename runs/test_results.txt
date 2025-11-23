@@ -1,0 +1,33 @@
+==================================================
+Results for run: DualStreamSegFormer_BCE_DICE
+TTA Enabled: True
+Model Architecture: DualStreamSegFormer
+Model Path: runs\DualStreamSegFormer_BCE_DICE\best_model.pth
+Precision   : 0.2725
+Recall      : 0.3101
+F1 score    : 0.2356
+Iou         : 0.1511
+==================================================
+
+==================================================
+Results for run: DualStreamSegFormer_BCE_DICE
+TTA Enabled: False
+Model Architecture: DualStreamSegFormer
+Model Path: runs\DualStreamSegFormer_BCE_DICE\best_model.pth
+Precision   : 0.2807
+Recall      : 0.2948
+F1 score    : 0.2338
+Iou         : 0.1496
+==================================================
+
+==================================================
+Results for run: DualStreamSegFormer_BCE_DICE
+TTA Enabled: True
+Model Architecture: DualStreamSegFormer
+Model Path: runs\DualStreamSegFormer_BCE_DICE\best_model.pth
+Precision   : 0.2725
+Recall      : 0.3101
+F1 score    : 0.2356
+Iou         : 0.1511
+==================================================
+
