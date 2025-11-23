@@ -1,0 +1,33 @@
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13\best_model.pth
+Precision   : 0.2387
+Recall      : 0.3204
+F1 score    : 0.2647
+Iou         : 0.1656
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13
+TTA Enabled: False
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13\best_model.pth
+Precision   : 0.2870
+Recall      : 0.3514
+F1 score    : 0.2825
+Iou         : 0.1780
+==================================================
+
+==================================================
+Results for run: SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13
+TTA Enabled: True
+Model Architecture: SegFormer
+Model Path: runs\SegFormer_run_8_LowerLR_and_LowerMaxWeight_2_ONLY_B4_B8_B12_B13\best_model.pth
+Precision   : 0.2387
+Recall      : 0.3204
+F1 score    : 0.2647
+Iou         : 0.1656
+==================================================
+
