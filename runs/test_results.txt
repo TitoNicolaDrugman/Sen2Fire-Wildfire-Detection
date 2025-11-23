@@ -1,0 +1,30 @@
+==================================================
+Results for run: ConvTransUNet_imbalance_run3
+Model Architecture: CNNTransformerUNet
+Model Path: runs\ConvTransUNet_imbalance_run3\best_model.pth
+Precision   : 0.2150
+Recall      : 0.3611
+F1 score    : 0.2103
+Iou         : 0.1396
+==================================================
+
+==================================================
+Results for run: ConvTransUNet_imbalance_run3
+Model Architecture: CNNTransformerUNet
+Model Path: runs\ConvTransUNet_imbalance_run3\best_model.pth
+Precision   : 0.2141
+Recall      : 0.3615
+F1 score    : 0.2099
+Iou         : 0.1394
+==================================================
+
+==================================================
+Results for run: ConvTransUNet_imbalance_run3
+Model Architecture: CNNTransformerUNet
+Model Path: runs\ConvTransUNet_imbalance_run3\best_model.pth
+Precision   : 0.2150
+Recall      : 0.3611
+F1 score    : 0.2103
+Iou         : 0.1396
+==================================================
+

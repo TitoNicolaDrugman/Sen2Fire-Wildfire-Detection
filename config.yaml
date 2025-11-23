@@ -1,0 +1,38 @@
+# config.yaml
+
+# --- Project Settings ---
+base_run_name: "ConvTransUNet_imbalance_run3"
+output_dir: "runs"
+
+# --- Dataset Settings ---
+data_path: "C:/Users/drugm/Documents/DATA_ANALYTICS/HK_1/dataset"
+train_scenes: ["scene1", "scene2"]
+val_scenes: ["scene3"]
+test_scenes: ["scene4"]
+stats_file: "runs/dataset_stats.pt"  # will also store pos_weight
+
+# --- Model Settings ---
+model_name: "CNNTransformerUNet"   # switch to the hybrid model
+input_channels: 4                 # 12 S2 + 1 aerosol
+
+# --- Loss/Imbalance Settings ---
+loss_name: "BCE_FT"              # options: "BCE", "DICE", "BCE_DICE", "FOCAL", "BCE_FT"
+use_pos_weight_from_stats: true    # if true and available, uses pos_weight saved in stats
+focal_alpha: 0.25                  # used only for FOCAL
+focal_gamma: 2.0                   # used only for FOCAL
+dice_smooth: 1.0                   # Dice smoothing
+
+# --- Training Settings ---
+device: "cuda"
+batch_size: 16
+epochs: 200
+learning_rate: 0.0003
+num_workers: 4
+patience: 20
+amp: true                          # enable mixed precision
+
+# --- Eval Settings ---
+eval_threshold: 0.5                # probability threshold for metrics
+
+# --- Output Settings ---
+results_file: "runs/test_results.txt"
