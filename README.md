@@ -29,6 +29,20 @@ Please switch to the branch corresponding to the model you wish to explore:
 
 ---
 
+## Experimental Results
+
+The table below details the quantitative performance of our different model configurations on the Sen2Fire Test Set.
+
+![Experimental Results Table](docs/table_results_1.png)
+
+### Understanding the Metrics & TTA Impact
+To maximize detection robustness, we utilized **Test Time Augmentation (TTA)** during inference.
+
+*   **Main Values:** Represent the final results achieved **with** TTA enabled.
+*   **Subscript Values (The "Pedix"):** These indicate the **impact of TTA** on the model's performance. Values marked with an arrow show the **improvement (or decrement)** gained by using TTA compared to the standard inference without it.
+
+---
+
 ## Model Configurations
 
 We experimented with three primary architectural families, iterating on input strategies (all bands vs. specific indices), loss functions, and regularization techniques.
