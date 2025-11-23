@@ -1,0 +1,66 @@
+==================================================
+Results for run: v01_5_BCEDiceLoss
+TTA Enabled: True
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_BCEDiceLoss\best_model.pth
+Precision   : 0.2256
+Recall      : 0.2474
+F1 score    : 0.1833
+Iou         : 0.1219
+==================================================
+
+==================================================
+Results for run: v01_5_BCEDiceLoss_2
+TTA Enabled: True
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_BCEDiceLoss_2\best_model.pth
+Precision   : 0.2459
+Recall      : 0.2564
+F1 score    : 0.2050
+Iou         : 0.1370
+==================================================
+
+==================================================
+Results for run: v01_5_BCEDiceLoss_2_LowerLR
+TTA Enabled: True
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_BCEDiceLoss_2_LowerLR\best_model.pth
+Precision   : 0.2543
+Recall      : 0.2358
+F1 score    : 0.1971
+Iou         : 0.1318
+==================================================
+
+==================================================
+Results for run: v01_5_DropoutRegularization
+TTA Enabled: True
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_DropoutRegularization\best_model.pth
+Precision   : 0.2334
+Recall      : 0.2680
+F1 score    : 0.2139
+Iou         : 0.1442
+==================================================
+
+==================================================
+Results for run: v01_5_DropoutRegularization
+TTA Enabled: False
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_DropoutRegularization\best_model.pth
+Precision   : 0.2334
+Recall      : 0.2743
+F1 score    : 0.2179
+Iou         : 0.1477
+==================================================
+
+==================================================
+Results for run: v01_5_DropoutRegularization
+TTA Enabled: True
+Model Architecture: CNNTransformerUNet
+Model Path: runs\v01_5_DropoutRegularization\best_model.pth
+Precision   : 0.2334
+Recall      : 0.2680
+F1 score    : 0.2139
+Iou         : 0.1442
+==================================================
+
