@@ -60,3 +60,40 @@ def test_model(config, test_run_name):
                 all_metrics[key].append(batch_metrics[key])
 
     # ... (rest of the script is fine) ...
+
+def predict_with_tta_probs(model, x):
+    """
+    Returns averaged probabilities from TTA transforms.
+    model(x) -> logits (B,1,H,W). We sigmoid then average probs.
+    """
+    device = next(model.parameters()).device
+    x = x.to(device)
+
+    outs = []
+
+    def infer(inp):
+        out = model(inp)           # logits
+        prob = torch.sigmoid(out) # probs
+        return prob
+
+    # identity
+    outs.append(infer(x))
+
+    # horizontal flip
+    xh = torch.flip(x, [3])
+    ph = infer(xh)
+    outs.append(torch.flip(ph, [3]))
+
+    # vertical flip
+    xv = torch.flip(x, [2])
+    pv = infer(xv)
+    outs.append(torch.flip(pv, [2]))
+
+    # rotations 90,180,270
+    for k in [1, 2, 3]:
+        xr = torch.rot90(x, k, dims=[2, 3])
+        pr = infer(xr)
+        outs.append(torch.rot90(pr, -k, dims=[2, 3]))
+
+    probs_avg = torch.stack(outs, dim=0).mean(dim=0)  # (B,1,H,W)
+    return probs_avg
