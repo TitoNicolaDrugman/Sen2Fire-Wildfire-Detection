@@ -3,7 +3,7 @@
 
 This repository contains various deep learning implementations and experiments aimed at benchmarking and improving wildfire detection using the **Sen2Fire** dataset.
 
-Building upon the baseline established in the original paper, we explore different architectures—ranging from Unet, Hybrid Transformer-CNNs to Dual-Stream SegFormers—and input strategies to maximize detection performance on multi-spectral satellite imagery.
+Building upon the baseline established in the original paper, we explore different architectures—ranging from Unet, Hybrid Transformer-CNNs, Dual-Stream SegFormers to nnU-Net—and input strategies to maximize detection performance on multi-spectral satellite imagery.
 
 ### Reference Material
 *   **Original Paper:** [SEN2FIRE: A Challenging Benchmark Dataset for Wildfire Detection Using Sentinel Data](https://arxiv.org/abs/2403.17884)
@@ -26,6 +26,7 @@ Please switch to the branch corresponding to the model you wish to explore:
 | **SegFormer** | [`SegFormer_v03_3`](#) | Spatial Weighting + Augmentation |
 | **SegFormer** | [`SegFormer_v03_4`](#) | 4-channel Input Selection |
 | **Dual-Stream SegFormer** | [`Dual-Stream-SegFormer_v03_5`](#) | Expert/Context Stream Fusion |
+| **nnU-Net** | [`nnUNet`](#) | Self-configuring U-Net architecture |
 
 ---
 
@@ -93,6 +94,16 @@ A novel approach splitting the input into "Expert" (high-signal) and "Context" s
         3.  **Fusion:** Feature maps concatenated at 4 scales $\rightarrow$ 1x1 Conv fusion $\rightarrow$ MLP Head.
     *   **Training:** `BCE_DICE` with **Spatial Pixel Weighting**. `LR: 1e-5`.
 
+### 4. nnU-Net
+Implementation of the nnU-Net framework, originally designed for medical image segmentation, adapted for wildfire detection.
+
+*   **Architecture:** Self-configuring U-Net architecture that automatically adapts to the dataset properties.
+*   **Key Features:**
+    *   Automatic configuration of network topology, training, and inference strategies.
+    *   Dynamic patch size and batch size selection based on available memory.
+    *   Ensemble predictions from multiple configurations (2D, 3D, cascade).
+*   **Note:** Available in the [`nnUNet`](#) branch for experimentation.
+
 ---
 
 ## Getting Started
@@ -109,6 +120,9 @@ To run these models, please follow the steps below:
     ```bash
     # Example: To use the Dual Stream model
     git checkout Dual-Stream-SegFormer_v03_5
+    
+    # Or to try nnU-Net
+    git checkout nnUNet
     ```
 
 3.  **Install dependencies:**
